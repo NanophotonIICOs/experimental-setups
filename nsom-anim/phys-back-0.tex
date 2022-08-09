@@ -1,0 +1,88 @@
+\documentclass[export,border={-0.2mm 0.2mm 0.2mm 0.2mm}]{standalone}
+% \usepackage[paperwidth = 13cm, 
+%             paperheight = 9cm, 
+%             textwidth = 13cm,
+%             textheight = 9cm,
+%             centering]{geometry}
+\usepackage{pgfplotstable}
+\usepackage{amsmath,bm}
+\usepackage{tikz, tikz-3dplot}
+\usepackage{animate}
+\usepackage{grid-guide}
+
+\usetikzlibrary{arrows,
+3d,
+	arrows.meta,
+	decorations.pathmorphing,
+	calc,%
+	decorations.pathmorphing,%
+	decorations.markings,
+	fadings,%
+	shadings,%
+	positioning,
+	spy,
+	shapes,
+	shapes.geometric,
+	shapes.arrows,
+	fit,	plotmarks,}
+\usepackage{tikz-dimline}
+\definecolor{shinee}{RGB}{136,216,192}
+\usetikzlibrary{ decorations.markings}
+\begin{document}
+\begin{animateinline}[autoplay,loop]{3}
+    \multiframe{30}{n=1+1}
+{
+\begin{tikzpicture}[remember picture]
+    \draw[opacity=0,fill=white](-1.8,-0.1) rectangle ++(11.3,5.5);
+   
+
+    %\draw[labeled grid](-1,0) to (10,6);   
+\begin{scope}
+\pgfmathparse{\n}
+\draw[gray,fill=gray!70] (-1.79,-0.1) rectangle ++ (11.29,1mm);
+
+\ifnum\pgfmathresult<16
+    \node(i1) at (4.83cm-1*\n mm,1.2cm+0.45mm*\n){\includegraphics[width=0.5\textwidth]{build-ruco/grating.pdf}};
+    \coordinate (c1) at ([yshift=1mm]i1.south);
+    \coordinate (c2) at (4.84cm-1mm*\n,0.15mm);
+    \draw[gray,fill=gray!50] ([xshift=-3mm,yshift=-0mm]c1)rectangle([xshift=3mm,yshift=0mm]c2);
+    \draw[gray,fill=gray!50] ([yshift=.5mm]i1.south west) rectangle ++ (6.3,1mm);
+
+    %\draw (4.83cm-1*\n,0.15mm)--(4.83cm-1*\n,0.15mm,i1.center);
+    
+
+\else
+    \node(i1) at (4.8cm-1*\n mm,0.5cm+0.45mm*\n){\includegraphics[width=0.5\textwidth]{build-ruco/grating.pdf}};
+    \coordinate (c1) at ([yshift=1mm]i1.south);
+    \coordinate (c2) at (4.84cm-1mm*\n,0.15mm);
+    \draw[gray,fill=gray!50] ([xshift=-2mm,yshift=-0mm]c1)rectangle([xshift=2mm,yshift=0mm]c2);
+    \draw[gray,fill=gray!50] ([yshift=.5mm]i1.south west) rectangle ++ (6.3,1mm);
+
+
+    
+\fi
+\end{scope}
+\begin{scope}[xshift=5mm,yshift=4.8cm,scale=1]
+        \shade[left color = gray,right color=gray!40,draw] (0,-.1) to [bend left=-10] (4,-1.5)--++(1.5,0.65) to [bend right=-5] (2,0)--(0,-0.1);
+        \shade[top color = black!70,bottom color=black!20,draw] (4.2,-1.4) to [bend right=10] (4.2,-2.5)--++(0.1,0) to [bend right=10] (4.7,-1.2)--cycle;
+        \draw[line width=2mm,red](8.5,0.3) -- (6.69, -1);
+        \shade[rotate around={37:(6.5,-1.2)},outer color=blue!80,inner color=white,draw,line width=0.3mm] (6.5,-1.2) ellipse (0.3cm and 0.8cm);
+        \draw[-{Triangle[width=15pt,length=10pt]},red, line width=2mm](6.5, -1.12)--(5.5,-1.8);
+        \draw[line width=0.2mm,red] (5.97,-0.7)--(4.3,-2.5);
+        \draw[line width=0.2mm,red] (6.75,-1.8)--(4.3,-2.5);
+        \filldraw[left color = red,right color=red!50,draw=red] (4.3,-2.5)--++(0.3,0.01) arc (0:45:.5)--cycle;
+
+    \draw[densely dotted,red,line width=0.25mm] (4.3,-4.2)--(4.3,0);
+        \end{scope}
+
+        \begin{scope}[yshift=2.27cm]
+            \draw[-{Stealth},blue] (-1.2,0.73)--++(0,1cm) node[above] {$z$};
+            \draw[-{Stealth},blue] (-1.2,0.73)--++(1,0cm)node[above] {$y$};
+            \draw[-{Stealth},blue] (-1.2,0.73)--++(-0.56,-0.5cm)node[above,yshift=1mm,xshift=1mm] {$x$};        
+        \end{scope}
+
+\end{tikzpicture}
+}
+\end{animateinline}
+\end{document}
+

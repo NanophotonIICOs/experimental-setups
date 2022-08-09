@@ -1,0 +1,17 @@
+\documentclass[margin=0mm]{standalone}
+\usepackage[pdf]{pstricks}
+\usepackage[pspdf={-dDELAYSAFER}]{auto-pst-pdf}
+\usepackage{pst-optexp}
+\usepackage{pstricks,pst-slpe} 
+
+\definecolor{shinee}{RGB}{136,216,192}
+
+
+\begin{document}
+\begin{pspicture}
+
+
+    \optgrating[gratingwidth=8,gratingheight=3,gratingdepth=1,gratingtype=blazed,gratingcount=4,fillstyle=solid,fillcolor=shinee, linecolor=shinee,opacity=0.5,linewidth=0.1](5,5)(5,3)(5,5){}
+\end{pspicture}
+    
+\end{document}
